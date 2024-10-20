@@ -131,23 +131,56 @@ where last_name = "Krauze"
 </details>
 
 48. Medium 🟠🟠<br>
-Как много классов было у Крауза 30 Августа 2019 года?[(ссылка на задание)](https://sql-academy.org/en/trainer/tasks/48)
+Вывести количество студентов в каждом классе в порядке убывания [(ссылка на задание)](https://sql-academy.org/en/trainer/tasks/48)
 
 <details>
 <summary>Решение</summary>
 
 ```sql
-select count(DISTINCT name) as count 
-from Teacher
-JOIN Schedule on Schedule.teacher = Teacher.id
-JOIN Class on Class.id = Schedule.class
+select name, count(*) as count
+from Class JOIN Student_in_class
+on Student_in_class.class = Class.id
 
-where last_name = "Krauze"
+GROUP BY name
+
+ORDER BY count desc
+```
+
+</details>
+
+49. Medium 🟠🟠<br>
+Какой процент студентов, учащихся в "10 А" [(ссылка на задание)](https://sql-academy.org/en/trainer/tasks/49)
+
+<details>
+<summary>Решение</summary>
+
+```sql
+select 
+(SELECT count(name) FROM Class
+JOIN Student_in_class ON Class.id = Student_in_class.class
+WHERE name = "10 A") / COUNT(*) * 100 as percent
+FROM Class
+JOIN Student_in_class ON Class.id = Student_in_class.class
 
 ```
 
 </details>
 
+50. Medium 🟠🟠<br>
+Какой процент студентов родилось в 2000 году? [(ссылка на задание)](https://sql-academy.org/en/trainer/tasks/50)
+
+<details>
+
+<summary>Решение</summary>
+
+```sql
+SELECT 
+FLOOR((SELECT COUNT(*) FROM Student
+WHERE YEAR(birthday) = 2000) / COUNT(*) * 100) as percent
+FROM Student
+```
+
+</details>
 
 
 🔴
