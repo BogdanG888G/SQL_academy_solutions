@@ -96,23 +96,59 @@ limit 1)
 </details>
 
 46. Medium 🟠🟠<br>
-Найти максимальный возраст среди студентов, учащихся в 10 классе [(ссылка на задание)](https://sql-academy.org/en/trainer/tasks/46)
+В каких классах будет преподавать Крауз "Krauze"?[(ссылка на задание)](https://sql-academy.org/en/trainer/tasks/46)
 
 <details>
 <summary>Решение</summary>
 
 ```sql
-select max(abs(TIMESTAMPDIFF(YEAR, CURDATE(), birthday))) as max_year 
+select DISTINCT name 
+from Teacher
+JOIN Schedule on Schedule.teacher = Teacher.id
+JOIN Class on Class.id = Schedule.class
 
-from Class JOIN 
-Student_in_class on Student_in_class.class = Class.id
-JOIN Student on Student.id = Student_in_class.student
+WHERE last_name = "Krauze"
+```
 
-where Class.name like '10%'
+</details>
+
+47. Medium 🟠🟠<br>
+Как много классов было у Крауза 30 Августа 2019 года?[(ссылка на задание)](https://sql-academy.org/en/trainer/tasks/47)
+
+<details>
+<summary>Решение</summary>
+
+```sql
+select count(DISTINCT name) as count 
+from Teacher
+JOIN Schedule on Schedule.teacher = Teacher.id
+JOIN Class on Class.id = Schedule.class
+
+where last_name = "Krauze"
 
 ```
 
 </details>
+
+48. Medium 🟠🟠<br>
+Как много классов было у Крауза 30 Августа 2019 года?[(ссылка на задание)](https://sql-academy.org/en/trainer/tasks/48)
+
+<details>
+<summary>Решение</summary>
+
+```sql
+select count(DISTINCT name) as count 
+from Teacher
+JOIN Schedule on Schedule.teacher = Teacher.id
+JOIN Class on Class.id = Schedule.class
+
+where last_name = "Krauze"
+
+```
+
+</details>
+
+
 
 🔴
 🟠
