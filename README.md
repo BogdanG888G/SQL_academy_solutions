@@ -183,6 +183,68 @@ FROM Student
 </details>
 
 
+51. Medium 🟠🟠<br>
+Добавьте продукт с названием "Сыр" и отнесите его к типу "Еда" [(ссылка на задание)](https://sql-academy.org/en/trainer/tasks/51)
+
+<details>
+
+<summary>Решение</summary>
+
+```sql
+INSERT INTO Goods
+SET good_id   = (
+    SELECT COUNT(*) + 1
+    FROM Goods AS gs
+),
+    good_name = 'Cheese',
+    type      = (
+        SELECT good_type_id
+        FROM GoodTypes
+        WHERE good_type_name = 'food'
+    );
+```
+
+</details>
+
+52. Medium 🟠🟠<br>
+Добавьте в список типов товаров (GoodTypes) новый тип "auto" [(ссылка на задание)](https://sql-academy.org/en/trainer/tasks/52)
+
+<details>
+
+<summary>Решение</summary>
+
+```sql
+INSERT INTO GoodTypes
+SET good_type_id   = (
+    SELECT COUNT(*) + 1
+    FROM GoodTypes AS gt
+),
+    good_type_name = 'auto';
+```
+
+</details>
+
+
+52. Medium 🟠🟠<br>
+Добавьте в список типов товаров (GoodTypes) новый тип "auto" [(ссылка на задание)](https://sql-academy.org/en/trainer/tasks/52)
+
+<details>
+
+<summary>Решение</summary>
+
+```sql
+INSERT INTO GoodTypes
+SET good_type_id   = (
+    SELECT COUNT(*) + 1
+    FROM GoodTypes AS gt
+),
+    good_type_name = 'auto';
+```
+
+</details>
+
+
+
 🔴
 🟠
 🟢
