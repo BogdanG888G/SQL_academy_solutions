@@ -243,6 +243,20 @@ SET good_type_id   = (
 
 </details>
 
+53. Easy 🟢<br>
+Поменяйте имя "Andie Quincey" на новое - "Andie Anthony" [(ссылка на задание)](https://sql-academy.org/en/trainer/tasks/53)
+
+<details>
+
+<summary>Решение</summary>
+
+```sql
+UPDATE FamilyMembers
+SET member_name = 'Andie Anthony'
+WHERE member_name = 'Andie Quincey';
+```
+
+</details>
 
 
 🔴
