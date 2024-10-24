@@ -259,6 +259,46 @@ WHERE member_name = 'Andie Quincey';
 </details>
 
 
+
+59.  Medium 🟠🟠<br>
+Выведите пользователей, у которых белорусский номер телефона (код "+375")
+ [(ссылка на задание)](https://sql-academy.org/en/trainer/tasks/59)
+
+<details>
+
+<summary>Решение</summary>
+
+```sql
+SELECT * FROM Users
+WHERE phone_number LIKE '+375%'
+```
+
+</details>
+
+60. Hard 🔴🔴🔴<br>
+Выведите идентификаторы учителей, которые преподавали хотя бы один раз за все время в каждом из одиннадцатых классов [(ссылка на задание)](https://sql-academy.org/en/trainer/tasks/60)
+
+<details>
+
+<summary>Решение</summary>
+
+```sql
+SELECT teacher FROM (
+SELECT Schedule.teacher, Class.name, 
+ROW_NUMBER() OVER(PARTITION BY Schedule.teacher ORDER BY Class.name) as dc 
+FROM 
+Teacher JOIN Schedule on Schedule.teacher = Teacher.id
+JOIN Class on Class.id = Schedule.class
+
+where Class.name LIKE '11%'
+GROUP BY Schedule.teacher, Class.name
+) as fin
+where dc = 2
+```
+
+</details>
+
+
 🔴
 🟠
 🟢
