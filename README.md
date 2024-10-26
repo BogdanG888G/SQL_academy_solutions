@@ -298,6 +298,43 @@ where dc = 2
 
 </details>
 
+61. Medium 🟠🟠<br>
+Выведите список номеров, которые были зарезервированы хотя бы на один день в 12-ю неделю 2020 года. В этой задаче возьмите период из семи дней за одну неделю, первая из которых начинается 1 января 2020 года. Например, первая неделя года — с 1 по 7 января, а третья — с 15 по 21 января. [(ссылка на задание)](https://sql-academy.org/en/trainer/tasks/61)
+
+<details>
+
+<summary>Решение</summary>
+
+```sql
+SELECT Rooms.* FROM Reservations JOIN Rooms
+ON Reservations.room_id = Rooms.id
+WHERE week(start_date, 1) = 12 and year(start_date)= 2020 and TIMEDIFF(end_date, start_date) >= 1
+
+
+```
+
+</details>
+
+62. Medium 🟠🟠<br>
+Перечислите доменные имена 2-го уровня, используемые пользователями для электронной почты, в порядке убывания популярности. Полученный результат необходимо дополнительно отсортировать в порядке возрастания доменных имен [(ссылка на задание)](https://sql-academy.org/en/trainer/tasks/62)
+
+<details>
+
+<summary>Решение</summary>
+
+```sql
+SELECT SUBSTRING_INDEX(email, '@', -1) as domain, count(*) as count FROM Users
+
+GROUP BY domain
+ORDER BY count desc, domain asc
+
+
+```
+
+</details>
+
+
+
 
 🔴
 🟠
